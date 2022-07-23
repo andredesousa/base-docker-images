@@ -28,11 +28,11 @@ jobs:
 
     - name: Lint Dockerfiles
       uses: hadolint/hadolint-action@v2.0.0
-      run: ./mvnw exec:exec -Plint
+    - run: ./mvnw exec:exec -Plint
 
     - name: Vulnerabilities scanning
       uses: aquasecurity/trivy-action@0.5.1
-      run: ./mvnw exec:exec -Pscan
+    - run: ./mvnw exec:exec -Pscan
 
     - name: Build images
       run: ./mvnw clean package
