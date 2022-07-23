@@ -48,7 +48,7 @@ Based on best practices from the community, other github projects and developer 
 └── README.md
 ```
 
-All of the Docker content goes in a folder named `src/docker`.
+All Docker content goes into a `src/docker` folder.
 The smoke tests are in the `src/test` folder.
 
 ## Building images
@@ -110,10 +110,11 @@ You can also run per-module smoke tests. In each module run the `test` command.
 
 ## Releasing
 
-This project uses [Maven Release Plugin](https://maven.apache.org/maven-release/maven-release-plugin/) to release a project with Maven.
+This project uses the [Maven Release Plugin](https://maven.apache.org/maven-release/maven-release-plugin/) to release a new version of the project.
 
 To create the first SNAPSHOT version, you must execute the commands `./mvnw release:prepare` and `./mvnw release:perform`.
-Considering a complete flow with an official release or a bugfix fix, you will need to change the MAJOR and MINOR versions of the project. Then, you will execute the `prepare` and `perform` command again so that these changes are inserted into your repository.
+Considering a complete flow with an official release or a bugfix fix, you will need to change the MAJOR and MINOR versions of the project.
+Then, you will execute the `prepare` and `perform` command again so that these changes are inserted into your repository.
 
 ## Commit messages convention
 
