@@ -1,0 +1,10 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "ms-azuretools.vscode-docker",
+    "redhat.vscode-xml",
+    "AquaSecurityOfficial.trivy-vulnerability-scanner",
+    "vscjava.vscode-java-pack"
+  ]
+}
