@@ -1,6 +1,6 @@
 FROM ${docker.image.name}:${docker.image.version}
 
-USER nginx
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 8080
 

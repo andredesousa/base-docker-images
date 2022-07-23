@@ -37,3 +37,6 @@ jobs:
 
     - name: Build images
       run: ./mvnw clean package
+
+    - name: Smoke Tests
+      run: ./mvnw clean package

@@ -7,9 +7,10 @@ It is recommended to have, at least, **Java 11**, and [Docker](https://www.docke
 ## Table of Contents
 
 - [Project structure](#project-structure)
+- [Building images](#building-images)
 - [Linting](#linting)
 - [Vulnerabilities scanning](#vulnerabilities-scanning)
-- [Building images](#building-images)
+- [Smoke testing](#smoke-testing)
 - [Releasing](#releasing)
 - [Commit messages convention](#commit-messages-convention)
 - [References](#references)
@@ -25,11 +26,19 @@ Based on best practices from the community, other github projects and developer 
 ├── .mvn
 ├── base-image-nginx
 │   ├── src
-│   │   └── docker
-│   │       └── Dockerfile
+│   │   ├── docker
+│   │   │   ├── assembly.xml
+│   │   │   ├── Dockerfile
+│   │   │   └── nginx.conf
+│   │   └── test
+│   │       ├── java
+│   │       │   └── SmokeTests.java
+│   │       └── resources
 |   └── pom.xml
 ├── base-image-payara
 │   ├── src
+│   │   ├── docker
+│   │   └── test
 |   └── pom.xml
 ├── .editorconfig
 ├── .gitignore
@@ -38,6 +47,22 @@ Based on best practices from the community, other github projects and developer 
 ├── pom.xml
 └── README.md
 ```
+
+All of the Docker content goes in a folder named `src/docker`.
+The smoke tests are in the `src/test` folder.
+
+## Building images
+
+Traditionally, you work with Docker images by authoring a Dockerfile, and with the help of `docker build` and `docker push`, you build and push your image to a remote registry.
+[docker-maven-plugin](https://github.com/fabric8io/docker-maven-plugin) is a Maven plugin for managing Docker images and containers.
+
+To build all Docker images defined in each Dockerfile, you can use the next command:
+
+```bash
+./mvnw clean package
+```
+
+Then you can verify the built images via `docker images` command.
 
 ## Linting
 
@@ -68,18 +93,20 @@ To scan for vulnerabilities, you can use the next command:
 *Trivy* supports different report formats.
 For more details, see the [Report Formats](https://aquasecurity.github.io/trivy/v0.30.0/docs/vulnerability/examples/report/) page.
 
-## Building images
+## Smoke testing
 
-Traditionally, you work with Docker images by authoring a Dockerfile, and with the help of `docker build` and `docker push`, you build and push your image to a remote registry.
-[docker-maven-plugin](https://github.com/fabric8io/docker-maven-plugin) is a Maven plugin for managing Docker images and containers.
+Smoke testing is non-exhaustive software analysis that ascertains that the most crucial functions of a program work but does not delve into finer details.
+[JUnit 5](https://junit.org/junit5/), [Testcontainers](https://www.testcontainers.org/) and [REST Assured](https://rest-assured.io/) are used in smoke tests.
 
-To build all Docker images defined in each Dockerfile, you can use the next command:
+To execute the smoke tests, you can use the next command:
 
 ```bash
-./mvnw clean package
+./mvnw test -Psmoke
 ```
 
-Then you can verify the built images via `docker images` command.
+The first time, you need to build the Docker images used in the smoke tests. See [Building images](#building-images) section.
+
+You can also run per-module smoke tests. In each module run the `test` command.
 
 ## Releasing
 
@@ -131,3 +158,7 @@ For further reference, please consider the following articles:
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Git Hooks Tutorial](https://www.atlassian.com/git/tutorials/git-hooks)
 - [Maven Release Plugin](https://thihenos.medium.com/maven-release-plugin-a-simple-example-of-package-management-9926506acfb9)
+- [How to use Fabric8 maven docker plugin](https://medium.com/orion-innovation-turkey/how-to-use-fabric8-maven-docker-plugin-introduction-b934b9a70261)
+- [Using Hadolint To Enforce Best Practices](https://www.containiq.com/post/hadolint)
+- [Continuous Container Vulnerability Testing](https://semaphoreci.com/blog/continuous-container-vulnerability-testing-with-trivy)
+- [Docker Test Containers in Java](https://www.baeldung.com/docker-test-containers)
