@@ -24,3 +24,6 @@ jobs:
 
     - name: Build images
       run: ./mvnw clean package
+
+    - name: Push images
+      run: ./mvnw docker:push -Ddocker.username=${{ github.actor }} -Ddocker.password=${{ secrets.GITHUB_TOKEN }}
