@@ -87,6 +87,10 @@
                             <arguments>
                                 <argument>image</argument>
                                 <argument>${docker.image.name}:${docker.image.version}</argument>
+                                <argument>--severity</argument>
+                                <argument>HIGH,CRITICAL</argument>
+                                <argument>--exit-code</argument>
+                                <argument>1</argument>
                             </arguments>
                         </configuration>
                     </plugin>

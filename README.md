@@ -156,10 +156,10 @@ The subject contains a succinct description of the change.
 For further reference, please consider the following articles:
 
 - [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [Git Hooks Tutorial](https://www.atlassian.com/git/tutorials/git-hooks)
-- [Maven Release Plugin](https://thihenos.medium.com/maven-release-plugin-a-simple-example-of-package-management-9926506acfb9)
 - [How to use Fabric8 maven docker plugin](https://medium.com/orion-innovation-turkey/how-to-use-fabric8-maven-docker-plugin-introduction-b934b9a70261)
 - [Using Hadolint To Enforce Best Practices](https://www.containiq.com/post/hadolint)
 - [Continuous Container Vulnerability Testing](https://semaphoreci.com/blog/continuous-container-vulnerability-testing-with-trivy)
 - [Docker Test Containers in Java](https://www.baeldung.com/docker-test-containers)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Git Hooks Tutorial](https://www.atlassian.com/git/tutorials/git-hooks)
+- [Maven Release Plugin](https://thihenos.medium.com/maven-release-plugin-a-simple-example-of-package-management-9926506acfb9)
